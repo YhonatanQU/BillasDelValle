@@ -619,7 +619,7 @@ function updateTableElement(tableId) {
         
         billDetails.innerHTML = `
             <div id="bill-print">
-                <h3>PoolTime PRO - Recibo de Pago</h3>
+                <h3>Billa´s del Valle - Recibo de Pago</h3>
                 <p><strong>Fecha:</strong> ${new Date().toLocaleString('es-PE')}</p>
                 <p><strong>Mesa:</strong> ${tablesConfig.find(t => t.id === tableId).number}</p>
                 <p><strong>Tiempo:</strong> ${formatTime(table.timer)}</p>
@@ -651,7 +651,7 @@ function updateTableElement(tableId) {
             
                 <p style="margin-top: 2rem; text-align: center;">
                     ¡Gracias por su visita!<br>
-                    Sistema de Gestión PoolTime PRO
+                    Sistema de Gestión de ventas - Billa´s del Valle
                 </p>
             </div>
         `;
