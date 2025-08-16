@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>PoolTime PRO - Gestión de Sala de Billar</title>
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="2"/>
+                <circle cx="12" cy="12" r="4" fill="white"/>
+            </svg>
+            PoolTime PRO
+        </div>
+        <div class="time-display" id="current-time"></div>
+    </header>
+    
+    <div class="container">
+        <div class="dashboard" id="tables-dashboard">
+            <!-- Mesas se generarán dinámicamente aquí -->
+        </div>
+    </div>
+    
+    <!-- Modal para agregar jugadores -->
+    <div class="modal" id="players-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="close-players-modal">&times;</button>
+            <h2 class="modal-title">Agregar Jugadores</h2>
+            <div class="form-group">
+                <label for="player-name" class="form-label">Nombre del Jugador</label>
+                <input type="text" id="player-name" class="form-input" placeholder="Ingrese nombre">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-players">Cancelar</button>
+                <button class="btn btn-primary" id="add-player">Agregar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para agregar productos -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="close-product-modal">&times;</button>
+            <h2 class="modal-title">Agregar Producto</h2>
+            <div class="form-group">
+                <label for="player-select" class="form-label">Jugador</label>
+                <select id="player-select" class="form-select">
+                    <!-- Jugadores se cargarán dinámicamente -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="product-select" class="form-label">Producto</label>
+                <select id="product-select" class="form-select">
+                    <option value="snack">Snack (3 PEN)</option>
+                    <option value="soda">Gaseosa (5 PEN)</option>
+                    <option value="water">Agua (2 PEN)</option>
+                    <option value="beer">Cerveza (8 PEN)</option>
+                    <option value="cigarettes">Cigarrillos (12 PEN)</option>
+                    <option value="candy">Dulces (1 PEN)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="product-quantity" class="form-label">Cantidad</label>
+                <input type="number" id="product-quantity" class="form-input" min="1" value="1">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-product">Cancelar</button>
+                <button class="btn btn-primary" id="confirm-product">Agregar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para dividir cuenta -->
+    <div class="modal" id="split-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="close-split-modal">&times;</button>
+            <h2 class="modal-title">Dividir Cuenta</h2>
+            
+            <div class="tabs">
+                <div class="tab active" data-tab="equal">Partes Iguales</div>
+                <div class="tab" data-tab="custom">Personalizado</div>
+            </div>
+            
+            <div id="equal-tab" class="tab-content active">
+                <div class="form-group">
+                    <label for="equal-players-count" class="form-label">Dividir entre cuántos jugadores?</label>
+                    <input type="number" id="equal-players-count" class="form-input" min="1" value="2">
+                </div>
+                <div id="equal-players-list">
+                    <!-- Se generará dinámicamente -->
+                </div>
+            </div>
+            
+            <div id="custom-tab" class="tab-content" style="display: none;">
+                <div class="form-group">
+                    <label class="form-label">Seleccione quiénes pagarán:</label>
+                    <div id="custom-players-list">
+                        <!-- Se generará dinámicamente -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-split">Cancelar</button>
+                <button class="btn btn-primary" id="confirm-split">Dividir</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para mostrar cuenta final -->
+    <div class="modal" id="bill-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="close-bill-modal">&times;</button>
+            <h2 class="modal-title">Cuenta Final</h2>
+            <div id="bill-details">
+                <!-- Detalles de la cuenta se generarán aquí -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="print-bill">Imprimir</button>
+                <button class="btn btn-success" id="close-bill">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
